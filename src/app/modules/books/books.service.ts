@@ -1,3 +1,5 @@
+import httpStatus from "http-status";
+import ApiError from "../../../errors/ApiError";
 import { IBook } from "./books.interface";
 import { Book } from "./books.model";
 
@@ -23,8 +25,17 @@ const deleteBook = async (id: string): Promise<IBook | null> => {
   return result;
 };
 
+const bookDetails = async (id: string): Promise<IBook | null> => {
+  const result = await Book.findById(id);
+  if (!result) {
+    throw new ApiError(httpStatus.BAD_REQUEST, "Book is Not found!");
+  }
+  return result;
+};
+
 export const BookService = {
   createBook,
   updateBook,
   deleteBook,
+  bookDetails,
 };
