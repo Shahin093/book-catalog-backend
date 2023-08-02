@@ -11,10 +11,10 @@ router.post(
   BookController.createBook
 );
 
-// router.patch(
-//   "/:id",
-//   zodValidateRequest(BookZodValidation.updateBookZodSchema),
-//   BookController.updateBook
-// );
+router.patch(
+  "/:id",
+  zodValidateRequest(BookZodValidation.updateBookZodSchema),
+  BookController.updateBook
+);
 
 export const BookRoutes = router;
