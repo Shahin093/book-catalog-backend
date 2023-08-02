@@ -32,7 +32,21 @@ const updateBook = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+// delete book
+const deleteBook = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const result = await BookService.deleteBook(id);
+
+  sendResponse<IBook | null>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Book Delete Successfully",
+    data: result!,
+  });
+});
+
 export const BookController = {
   createBook,
   updateBook,
+  deleteBook,
 };
