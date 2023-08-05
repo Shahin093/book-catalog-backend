@@ -28,7 +28,7 @@ const getAllBooks = catchAsync(async (req: Request, res: Response) => {
   const paginationOptions = pick(req.query, paginationFields);
 
   const result = await BookService.getAllBooks(filters, paginationOptions);
-
+console.log(result);
   sendResponse<IBook[]>(res, {
     statusCode: httpStatus.OK,
     success: true,

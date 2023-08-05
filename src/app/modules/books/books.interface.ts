@@ -1,4 +1,5 @@
-import { Model } from "mongoose";
+import { Model, Types } from "mongoose";
+import { IUser } from "../auth/auth.interface";
 
 export type IBook = {
   title: string;
@@ -7,6 +8,7 @@ export type IBook = {
   genre: string;
   publication_date: string;
   review: string;
+  user: Types.ObjectId | IUser;
 };
 
 export type IStudentFilters = {

@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 import { BookModel, IBook } from "./books.interface";
 
 //  Create a Schema corresponding to the document interface.
@@ -26,6 +26,11 @@ const booksSchema = new Schema<IBook>(
     },
     review: {
       type: String,
+    },
+    user: {
+      type: Types.ObjectId,
+      ref: "User",
+      required: true,
     },
   },
   {
