@@ -81,6 +81,17 @@ const updateBook = async (
   });
   return result;
 };
+// updateBookStatus
+const updateBookStatus = async (id: string): Promise<IBook | null> => {
+  const result = await Book.findOneAndUpdate(
+    { _id: id },
+    { status: true },
+    {
+      new: true,
+    }
+  );
+  return result;
+};
 
 // delete a book
 const deleteBook = async (id: string): Promise<IBook | null> => {
@@ -97,10 +108,22 @@ const bookDetails = async (id: string): Promise<IBook | null> => {
   return result;
 };
 
+// get book
+const getBooks = async (id: string): Promise<IBook[] | null> => {
+  const result = await Book.find({ user: id });
+  // console.log(result);
+  if (!result) {
+    throw new ApiError(httpStatus.BAD_REQUEST, "Books is Not found!");
+  }
+  return result;
+};
+
 export const BookService = {
   createBook,
   getAllBooks,
   updateBook,
   deleteBook,
   bookDetails,
+  getBooks,
+  updateBookStatus,
 };

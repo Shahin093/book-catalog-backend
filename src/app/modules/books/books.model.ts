@@ -27,6 +27,13 @@ const booksSchema = new Schema<IBook>(
     review: {
       type: String,
     },
+    bookStructure: {
+      type: String,
+    },
+    status: {
+      type: Boolean,
+      default: false,
+    },
     user: {
       type: Types.ObjectId,
       ref: "User",

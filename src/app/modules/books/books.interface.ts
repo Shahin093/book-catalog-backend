@@ -8,6 +8,8 @@ export type IBook = {
   genre: string;
   publication_date: string;
   review: string;
+  bookStructure: string;
+  status: boolean;
   user: Types.ObjectId | IUser;
 };
 
@@ -20,6 +22,9 @@ export type IStudentFilters = {
 
 export type IBookFilters = {
   searchTerm?: string;
+  title?: string;
+  author?: string;
+  genre?: string;
 };
 
 export type BookModel = Model<IBook, Record<string, unknown>>;
